@@ -1,0 +1,31 @@
+version: '2'
+services:
+ app:
+  image: tastyignitergn2
+#  build: .
+  container_name: tasty_app2
+  ports:
+  - "80:80"
+  - "443:443"
+  stdin_open: true
+  tty: true       
+  environment:
+  - MYSQL_HOSTNAME=db
+  - MYSQL_DATABASE=tastyigniter
+  - MYSQL_USER=tastyigniter
+  - MYSQL_PASSWORD=somepassword
+  restart: always
+ db:
+  image: mariadb
+  container_name: tasty_db
+  volumes:
+  - db_data:/var/lib/mysql
+  environment:
+  - MYSQL_RANDOM_ROOT_PASSWORD=yes
+  - MYSQL_DATABASE=tastyigniter
+  - MYSQL_USER=tastyigniter
+  - MYSQL_PASSWORD=somepassword
+  restart: always
+volumes:
+  db_data:
+    driver: local

@@ -47,10 +47,8 @@ COPY docker-entrypoint.sh /usr/local/bin/
 
 
 RUN set -ex; \
-        
         apt-get update; \
-        apt-get install certbot python-certbot-apache; \
-        certbot --apache -n -d pilones.de -m hmmy.ntua@gmail.com --agree-tos
+        apt-get install -y certbot python-certbot-apache
 
 #ENTRYPOINT ["/bin/sh"]
 #CMD ["/bin/sh &"]

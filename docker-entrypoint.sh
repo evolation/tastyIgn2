@@ -1,4 +1,7 @@
 #!/bin/bash
+
+certbot --apache -n -d pilones.de -m hmmy.ntua@gmail.com --agree-tos
+
 set -e
 
 if [ ! -e '/var/www/html/index.php' ]; then
