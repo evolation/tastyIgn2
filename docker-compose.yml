@@ -1,11 +1,15 @@
 version: '2'
 services:
  app:
-  image: thisisqasim/tastyigniter
+  image: tastyignitergn
 #  build: .
   container_name: tasty_app
   ports:
   - "8001:80"
+  - "443:443"
+  stdin_open: true
+  tty: true       
+
   environment:
   - MYSQL_HOSTNAME=db
   - MYSQL_DATABASE=tastyigniter

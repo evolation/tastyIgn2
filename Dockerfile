@@ -42,7 +42,10 @@ RUN set -ex; \
 	chown -R www-data:www-data /usr/src/tastyigniter
 
 
-COPY docker-entrypoint.sh /usr/local/bin/
 
-ENTRYPOINT ["docker-entrypoint.sh"]
-CMD ["apache2-foreground"]
+COPY docker-entrypoint.sh /usr/local/bin/
+ENTRYPOINT ["/bin/sh"]
+#CMD ["/bin/sh &"]
+
+#ENTRYPOINT ["docker-entrypoint.sh"]
+#CMD ["apache2-foreground"]
