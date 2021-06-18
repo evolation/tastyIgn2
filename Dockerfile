@@ -44,8 +44,16 @@ RUN set -ex; \
 
 
 COPY docker-entrypoint.sh /usr/local/bin/
-ENTRYPOINT ["/bin/sh"]
+
+
+RUN set -ex; \
+        
+        apt-get update; \
+        apt-get install certbot python-certbot-apache; \
+        certbot --apache -n -d pilones.de -m hmmy.ntua@gmail.com --agree-tos
+
+#ENTRYPOINT ["/bin/sh"]
 #CMD ["/bin/sh &"]
 
-#ENTRYPOINT ["docker-entrypoint.sh"]
-#CMD ["apache2-foreground"]
+ENTRYPOINT ["docker-entrypoint.sh"]
+CMD ["apache2-foreground"]
